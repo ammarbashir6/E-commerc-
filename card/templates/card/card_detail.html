@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+سلة المشتريات
+{% endblock title %}
+{% block content %}
+<div class="p-4">
+  <div class="row mb-4">
+    {% for item in card %}
+    {% with product=item.product %} 
+        <div class="col-md-4 mb-4">
+          <div class="card" style="width:18rem">
+            <div class="view overlay">
+              <a href="{{product.get_absolute_url}}"><img src="{{product.PRODImage.url}}" class="card-img-top" style="width:100%"></a>
+            </div>
+
+            <div class="card-body">
+              <div class="text-center grey-text">
+                <span>{{product.PRODCategory}}</span>
+                <h5>{{product.PRODName}}</h5>
+              </div>
+              <div class="p-2 text-center">
+                <form class="mb-2" action="{% url 'add-card' product.id %} " method="POST">
+                  {% csrf_token %}
+                  {{ item.update_quantity_form.quantity  }}
+                  {{ item.update_quantity_form.override  }}
+                  <button class="btn btn-outline-primary btn-md " type="submit">تعديل الكمية</button>
+                </form>
+                <form action="{% url 'remove-card' product.id %}" method="POST">
+                  {% csrf_token %}
+                  <button class="btn btn-outline-primary btn-md mr-5" type="submit">حذف من السلة</button>
+                <form>
+              </div>
+
+              <div class="text-center">
+                <P class="m-3">
+                السعر
+                  <span>{{product.PRODPrice}}</span>
+                </p>
+                <p>
+                الاجمالي  
+                  <span>{{ item.total_price }}</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+    {% endwith %}
+    {% endfor %}
+    
+  </div>
+</div>
+<div class="row">
+        <div class="col-md-6">
+          <h5 class="mb-3">إجمالي محتويات السلة</h5>
+        <span>{{card.get_total_price}}</span>
+      </div>
+      <a href="{% url 'order-create' %}">
+        <button class="btn btn-outline-primary btn-block waves-effect waves-light" type="button">إرسال الطلب</button>
+      </a>
+    </div>
+
+
+{% endblock %}

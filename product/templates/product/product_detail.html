@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block title %}
+صفحة تاصيل المنتج {{product.PRODARName}}
+{% endblock title %}
+{% block content %}
+<div class="row ">
+
+
+  <div class="col-md-6 mb-4">
+    <!--Content-->
+    <div class="p-4">
+      <div class="mb-3">
+        <a href="">
+          <span class="badge purple mr-1">{{ product.PRODCategory }}</span>
+        </a>
+
+      </div>
+
+      <p class="lead">
+        <span>{{ product.PRODARName }}</span>
+      </p>
+      
+      <p class="lead">
+        <span>{{ product.PRODPrice }}</span>
+      </p>
+
+      <p class="lead font-weight-bold">الوصف</p>
+
+      <p>{{ product.PRODDescription|linebreaks }}</p>
+
+      <form action={% url 'add-card' product.id %} method='POST' class="justify-content-right">
+          {{card_product_form}}
+          {% csrf_token %}
+        <button class="btn btn-primary btn-md my-0 p" type="submit">إضافة الي السلة</button>
+          <i class="fas fa-shopping-cart ml-1"></i>
+      </form>
+    </div>
+    <!--Content-->
+  </div>
+<div class="col-md-4 mb-4 ">
+  <img id="myimage" src="{{product.PRODImage.url}}" class="img-fluid">
+  
+</div>
+<div class="col-md-2 mb-4">
+  <div id="myresult" class="img-zoom-result"></div>
+</div
+
+<hr>
+
+
+
+    <h4 class="my-4 h4 mb-4">المزيد من الصور</h4>
+<!--Grid row-->
+<div class="row wow fadeIn p-5">
+     <!--Grid column-->
+    {% for img in productImages %}
+      <div class="col-lg-4 col-md-12 mb-4">
+        <img src="{{ img.PRODimages.url }}" class="img-fluid">
+      </div>
+    {% endfor %}
+  <!--Grid column-->
+</div>
+
+
+<!--Grid row-->
+
+{% endblock %} 

@@ -1,0 +1,142 @@
+{% load static  %}
+<!doctype html>
+<html lang="ar">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="description" content="سوق كوستي الإلكتروني ">
+    <meta name="copyright" content="سوق كوستي" >
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.18.0/css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link rel="stylesheet" type="text/css" href="{% static "css/style.min.css" %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    {% if title %}
+        <title>سوق كوستي - {% block title %}
+        {% endblock title %}</title>
+    {% else %}
+        <title>سوق كوستي - الصفحة الرئيسية</title>
+    {% endif %}
+
+  </head>
+  
+  <body>
+  <!--Start Navbar-->
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark  p-3">
+  <div class="container">
+  <a class="navbar-brand waves-effect" href="{% url 'product-list' %}"> <strong>سوق كوستي</strong> </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <ul class="nav navbar-nav navbar-right">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          الاصناف
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          {% block nav %}
+          {% endblock nav %}              
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          سلة المشتريات
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          {% with total_item=card|length %}
+            {% if total_item > 0 %}
+                 <a href="{% url 'card-detail' %}">
+              {{total_item}}
+             محتويات السلة عنصر
+            </a>
+            {% else %}
+              السلة فارغة
+            {% endif %}
+            {% endwith %}
+        </div>
+      </li>
+    </ul>   
+    </ul>
+  </div>
+  </div>
+</nav>
+
+  <!--End Navbar-->
+
+<!-- Jumbotron -->
+
+<!-- Jumbotron -->
+  <!--Main layout-->
+  <main style="height:1500px">
+  <div class="p-5">
+    <div class="container">
+      <!--Section: Products v.3-->
+      <section class="mt-4 "> 
+          {% block content %}
+          {% endblock content %}
+      </section>
+      <!--Section: Products v.3-->
+    </div>
+    </div>
+  </main>
+  <!--Main layout-->
+
+
+
+ <!--Footer-->
+  <footer class="page-footer text-center  mt-4 wow fadeIn bg-dark">
+
+    <hr class="my-4">
+
+    <!-- Social icons 
+    <div class="pb-4">
+      <a href="#" target="_blank">
+        <i class="fab fa-facebook-f mr-3"></i>
+      </a>
+
+      <a href="#" target="_blank">
+        <i class="fab fa-whatsapp mr-3"></i>
+      </a>
+    </div>
+     Social icons -->
+
+    <!--Copyright-->
+    <div class="footer-copyright py-3">
+     2020 © سوق كوستي الإلكتروني
+    </div>
+    <!--/.Copyright-->
+
+  </footer>
+  <!--/.Footer-->
+
+  <!-- SCRIPTS -->
+  <!-- JQuery -->
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.18.0/js/mdb.min.js"></script>
+  <!-- Initializations -->
+<script src="{% static 'js/script.js' %}"></script>
+  <script type="text/javascript">
+    // Animations initialization
+    imageZoom('myimage', 'myresult');
+    new WOW().init();
+
+  </script>
+  </body>
+</html>

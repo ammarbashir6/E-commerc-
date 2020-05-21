@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block nav %}
+{% load static %}
+{% for cat in categories %}
+    <a class="dropdown-item" href="#">{{cat.CATName}}</a>
+{% endfor %}
+
+{% endblock nav %}
+
+{% block content %}
+
+<div class="p-4">
+  <div class="row mb-4">
+    {% for product in products %}
+
+    <div class="col-lg-3 col-md-6 mb-4">
+      <div class="card">
+        <div class="view overlay">
+           <img src="{{product.PRODImage.url}}" class="card-img-top" alt="Image">
+           <a href="{% url 'product-detail' product.PRODSlug %}">
+              <div class="mask rgba-white-slight"></div>
+            </a>
+        </div>
+        <div class="card-body text-center">
+          <a class="black-text" href="{{ product.PRODCategory.get_absolute_url }}" >
+            <h5 class="grey-text"> قسم : {{product.PRODCategory}}</h5>
+          </a>
+
+          <h5>
+              <strong>
+                <a href="{% url 'product-detail' product.PRODSlug %}" class="dark-grey-text">{{product.PRODName}}
+                  {% comment %} <span class="badge badge-pill danger-color">NEW</span> {% endcomment %}
+                </a>
+              </strong>
+          </h5>
+
+
+          <h4 class="font-weight-bold blue-text">
+              <strong>{{product.PRODPrice}}$</strong>
+          </h4>
+  
+        {% comment %} <div class="panel-footer"><hr></div> {% endcomment %}
+        
+        </div>
+      </div>
+    </div>
+    {% endfor%}
+  </div>
+</div>
+{% endblock  %}
