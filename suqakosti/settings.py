@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "card.apps.CardConfig",
     "order.apps.OrderConfig",
     "crispy_forms",
+    "phonenumber_field",
 ]
 
 MIDDLEWARE = [
