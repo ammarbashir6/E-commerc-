@@ -29,7 +29,7 @@ def product_list(request, category_slug=None):
 def productDetail(request, slug):
     product = get_object_or_404(Product, PRODSlug=slug)
     productImages = ProductImages.objects.all().filter(product=product)
-    categories = Category.objects.all().filter(product=product)
+    # categories = Category.objects.all().filter(product=product)
     card_product_form = CardAddProductForm()
 
     return render(
@@ -38,7 +38,7 @@ def productDetail(request, slug):
         {
             "product": product,
             "productImages": productImages,
-            "categories": categories,
+            # "categories": categories,
             "card_product_form": card_product_form,
             "title": "product.PRODARName",
         },

@@ -37,7 +37,7 @@ COLOR = (
 
 class Product(models.Model):
     PRODCategory = models.ForeignKey(
-        Category, verbose_name=(""), on_delete=models.CASCADE
+        "Category", verbose_name=(""), on_delete=models.CASCADE
     )
     PRODName = models.CharField(max_length=200, verbose_name=("إسم المنتج"),)
     PRODARName = models.CharField(
