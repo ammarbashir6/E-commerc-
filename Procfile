@@ -1,1 +1,1 @@
-web: gunicorn suqakosti.wsgi  
+web: gunicorn suqakosti.wsgi --log-file - 
