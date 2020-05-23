@@ -10,6 +10,9 @@ class OrderItemInline(admin.TabularInline):
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
     list_display = [
+        "FullName",
+        "PhoneNumber1",
+        "PhoneNumber2",
         "ORDACreated",
         "ORDAUpdate",
         "ORDPaid",

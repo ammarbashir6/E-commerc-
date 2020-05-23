@@ -31,14 +31,14 @@ ADDRESSES = (
 class Order(models.Model):
     FullName = models.CharField(max_length=200, verbose_name=("الاسم بالكامل "),)
 
-    # PhoneNumber1 = models.CharField(max_length=10, verbose_name=("رقام الهاتف"))
-    # PhoneNumber2 = models.CharField(
-    #    max_length=10, verbose_name=("رقام هاتف اختياري"), blank=True
-    # )
-    phoneNumber1 = PhoneNumberField(max_length=10, verbose_name=("رقم الهاتف"))
-    PhoneNumber2 = PhoneNumberField(
-        max_length=10, blank=True, verbose_name=("رقم هاتف اخر ")
+    PhoneNumber1 = models.CharField(max_length=10, verbose_name=("رقام الهاتف"))
+    PhoneNumber2 = models.CharField(
+        max_length=10, verbose_name=("رقام هاتف اختياري"), blank=True
     )
+    # phoneNumber1 = PhoneNumberField(max_length=10, verbose_name=("رقم الهاتف"))
+    # PhoneNumber2 = PhoneNumberField(
+    #   max_length=10, blank=True, verbose_name=("رقم هاتف اخر ")
+    # )
     ORDAddressEra = models.CharField(
         max_length=200, choices=ADDRESSES, verbose_name=(" المنطقة"),
     )
