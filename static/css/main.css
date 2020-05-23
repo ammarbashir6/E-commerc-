@@ -23,7 +23,12 @@ body {
   width: 200px;
   height: 200px;
 }
-
+footer {
+  height: 0;
+  /* position: relative; */
+  top: 0;
+  bottom: 0;
+}
 /* .hero {
   height: 50%;
   position: relative;
