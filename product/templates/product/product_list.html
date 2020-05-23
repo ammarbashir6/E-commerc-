@@ -23,7 +23,7 @@
         </div>
         <div class="card-body text-center">
           <a class="black-text" href="{{ product.PRODCategory.get_absolute_url }}" >
-            <h5 class="grey-text"> قسم : {{product.PRODCategory}}</h5>
+            <h5 class="grey-text"> قسم : {{product.PRODARCategory}}</h5>
           </a>
 
           <h5>
@@ -36,7 +36,7 @@
 
 
           <h4 class="font-weight-bold blue-text">
-              <strong>{{product.PRODPrice}}$</strong>
+              <strong>{{product.PRODPrice|floatformat}}ج س</strong>
           </h4>
         
         </div>

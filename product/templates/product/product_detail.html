@@ -21,7 +21,7 @@
       </p>
       
       <p class="lead">
-        <span>{{ product.PRODPrice }}</span>
+        <span>{{ product.PRODPrice }} ج س</span>
       </p>
 
       <p class="lead font-weight-bold">الوصف</p>
@@ -48,8 +48,8 @@
 <hr>
 
 
-
-    <h4 class="my-4 h4 mb-4">المزيد من الصور</h4>
+{% if productImages.product %}
+<h4 class="my-4 h4 mb-4">المزيد من الصور</h4>
 <!--Grid row-->
 <div class="row wow fadeIn p-5">
      <!--Grid column-->
@@ -60,7 +60,7 @@
     {% endfor %}
   <!--Grid column-->
 </div>
-
+{% endif %}
 
 <!--Grid row-->
 
