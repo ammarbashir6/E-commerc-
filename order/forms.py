@@ -5,8 +5,8 @@ from .models import Order
 
 
 class OrderCreateForm(forms.ModelForm):
-    # PhoneNumber1 = PhoneNumberField()
-    # PhoneNumber2 = PhoneNumberField()
+     # PhoneNumber1 = forms.CharFaild()
+     # PhoneNumber2 = PhoneNumberField()
 
     class Meta:
         model = Order
