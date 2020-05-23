@@ -21,7 +21,7 @@ class Category(models.Model):
         verbose_name_plural = "الاصناف "
 
     def __str__(self):
-        return str(self.CATName)
+        return str(self.CATARName)
 
     def get_absolute_url(self):
         return reverse("product-list-by-category", args=[self.CATNSlug])

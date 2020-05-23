@@ -46,8 +46,9 @@
           الاصناف
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          {% block nav %}
-          {% endblock nav %}              
+          {% for cat in categories %}
+            <a class="dropdown-item" href="#">{{ cat.CATARName }}</a>
+          {% endfor %}            
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -78,7 +79,7 @@
 
 <!-- Jumbotron -->
   <!--Main layout-->
-  <main>
+  <main class="mb-5">
     <div class="container">
       <!--Section: Products v.3-->
       <section class="mt-4 "> 
